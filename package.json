@@ -1,0 +1,18 @@
+{
+  "name": "move",
+  "version": "1.0.0",
+  "description": "A simple animation frame.",
+  "main": "index.js",
+  "scripts": {
+    "build": "grunt build"
+  },
+  "author": "xx",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-uglify": "^2.0.0",
+    "grunt-contrib-watch": "^1.0.0"
+  }
+}
