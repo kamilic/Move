@@ -3,12 +3,12 @@ Move
 概括动画逻辑的简单框架，通过几个回调函数来完成动画效果。
 用于学习动画最基本的框架，我觉得是一个很好的选择。  
 **我能将它用于什么地方**  
--DOM动画操作
--Canvas动画操作
--纯粹数据随时间的变换
+* DOM动画操作
+* Canvas动画操作
+* 纯粹数据随时间的变换
 
-####用法
-######一个简单的栗子
+#### 用法
+###### 一个简单的栗子
 ```javascript
 new Move.AniObj({
         // user vars //
@@ -26,7 +26,7 @@ new Move.AniObj({
     // 当然如果在onUpdate与onRender上运行太长时间就会造成动画卡顿的问题。
 ```
 
-######移动一个DIV
+###### 移动一个DIV
 
 ```html
 <div id="block" style="width: 50px;height: 50px; background-color: royalblue; position: absolute;"> </div>
@@ -43,7 +43,7 @@ new Move.AniObj({
             //给出时间百分比,是一个线性动画,当然你也可以用如Bezier函数来做ease-in/out的动画
         },
         last : 3000,
-        dom : block,
+        dom : document.getElementById("block"),
         // required function //
         onUpdate : function(data){
             var now = Date.now();
