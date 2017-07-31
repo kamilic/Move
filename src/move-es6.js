@@ -1,5 +1,5 @@
 ;(function (factory) {
-    var registeredInModuleLoader = false;
+    let registeredInModuleLoader = false;
     if (typeof define === 'function' && define.amd) {
         define(factory);
         registeredInModuleLoader = true;
@@ -16,7 +16,7 @@
         /** @param loop {boolean}  global animation switch.
          *  @param isAnimationRunning A notation to indicate whether animation is running now.
          */
-        var loop = true,
+        let loop = true,
             isAnimationRunning = false,
             animationQueue = [],
             isAnimationFrameSupported = (typeof window.requestAnimationFrame === "function"),
@@ -84,15 +84,15 @@
          * @param data
          */
         function onClear(data) {
-            var canvas = data.context.canvas;
+            let canvas = data.context.canvas;
             canvas.width = canvas.width;
         }
 
         function animate() {
             if (loop === true) {
-                var len = animationQueue.length;
-                for (var i = 0; i < len; i++) {
-                    var aniObj = animationQueue.shift(),
+                let len = animationQueue.length;
+                for (let i = 0; i < len; i++) {
+                    let aniObj = animationQueue.shift(),
                         data = aniObj.data;
                     if (aniObj._over) {
                         continue;
