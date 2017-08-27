@@ -10,28 +10,31 @@
 </body>
 <script src="dist/move.js"></script>
 <script>
-    Move.animateAll();
-    new Move.AniObj({
-        // user vars //
-        src : 0,
-        dest : 500,
-        start : Date.now(),
-        timeMethod : function(now,data){
-            return (now-data.start)/data.last;
-            //给出时间百分比,是一个线性动画,当然你也可以用如Bezier函数来做ease-in/out的动画
-        },
-        last : 3000,
-        dom : document.getElementById("block"),
-        // required function //
-        onUpdate : function(data){
-            var now = Date.now();
-            if(now > data.start + data.last) this.stopAnimation();
-            data.x = Math.floor((data.dest - data.src) * data.timeMethod(now,data));
-        },
-        onRender : function(data){
-            data.dom.style.left = data.x + "px";
-        }
-    }).animate();
-
+    window.onload = function () {
+        Move.animateAll();
+        new Move.AniObj({
+            // user vars //
+            data : {
+                src : 0,
+                dest : 500,
+                start : Date.now(),
+                timeMethod : function(now,data){
+                    return (now-data.start)/data.last;
+                    //给出时间百分比,是一个线性动画,当然你也可以用如Bezier函数来做ease-in/out的动画
+                },
+                last : 3000,
+                dom : document.getElementById("block"),
+            },
+            // required function //
+            onUpdate : function(data){
+                var now = Date.now();
+                if(now > data.start + data.last) this.stopAnimation();
+                data.x = Math.floor((data.dest - data.src) * data.timeMethod(now,data));
+            },
+            onRender : function(data){
+                data.dom.style.left = data.x + "px";
+            }
+        }).animate();
+    };
 </script>
 </html>

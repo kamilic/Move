@@ -43,6 +43,7 @@
         aniData = aniData || {};
         aniData.isCanvas = aniData.isCanvas || false;
         this._data = aniData;
+        this.data = aniData.data || {};
         if (aniData.isCanvas) {
             if (aniData.context instanceof CanvasRenderingContext2D) {
                 if (aniData.onClear) {
@@ -93,15 +94,16 @@
             var len = animationQueue.length;
             for (var i = 0; i < len; i++) {
                 var aniObj = animationQueue.shift(),
-                    data = aniObj._data;
+                    _data = aniObj._data;
+                var data = aniObj.data;
                 if (aniObj._over) {
                     continue;
                 }
-                if (data.onFrameStart) data.onFrameStart.call(aniObj);
-                data.onUpdate.call(aniObj);
-                if (data.isCanvas) data.onClear.call(aniObj);
-                if (data.onRender) data.onRender.call(aniObj);
-                if (data.onFrameEnd) data.onFrameEnd.call(aniObj);
+                if (_data.onFrameStart) _data.onFrameStart.call(aniObj, data);
+                _data.onUpdate.call(aniObj, data);
+                if (_data.isCanvas) _data.onClear.call(aniObj, data);
+                if (_data.onRender) _data.onRender.call(aniObj, data);
+                if (_data.onFrameEnd) _data.onFrameEnd.call(aniObj, data);
                 animationQueue.push(aniObj);
             }
             if (isAnimationFrameSupported) {
