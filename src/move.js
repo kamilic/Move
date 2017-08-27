@@ -81,11 +81,10 @@
 
     /**
      * @function onClear
-     * @desc A default onClear function, to reset the canvas in order to prepare for next rendering.
-     * @param data
+     * @desc A default onClear function, to reset the canvas in order to prepare for next rendering.this
      */
-    function onClear(data) {
-        var canvas = data.context.canvas;
+    function onClear() {
+        var canvas = this.canvas;
         canvas.width = canvas.width;
     }
 
