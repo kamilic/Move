@@ -43,6 +43,8 @@
         aniData = aniData || {};
         aniData.isCanvas = aniData.isCanvas || false;
         this._data = aniData;
+        // expose some useful params
+        this.context = this._data.context;
         this.data = aniData.data || {};
         if (aniData.isCanvas) {
             if (aniData.context instanceof CanvasRenderingContext2D) {
